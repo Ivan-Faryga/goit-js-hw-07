@@ -17,17 +17,20 @@ refs.destroyBtnRef.addEventListener('click', onDestroy);
 
 
 function onInputChange(event) {
-    inputValue = event.currentTarget.value;
+    return inputValue = event.currentTarget.value;
     console.log(inputValue);
 };
 
 console.log(inputValue);
 
 function onRender(inputValue) {
-    const newBox = document.createElement('div');
-    newBox.width = `100px`;
-    newBox.height = `100px`;
-    newBoxesArray.push(newBox);
+    for (let i = 0; i < inputValue; i += 1) {
+        const newBox = document.createElement('div');
+        newBox.style.width = `100px`;
+        newBox.style.height = `100px`;
+        newBoxesArray.push(newBox);
+    };
+    
 
     boxesDivRef.append(...newBoxesArray);
 };

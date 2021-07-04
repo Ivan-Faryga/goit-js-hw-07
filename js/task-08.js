@@ -12,23 +12,25 @@ const boxesDivRef = document.querySelector('#boxes');
 let inputValue = 0;
 const newBoxesArray = [];
 
-refs.input.addEventListener('input', () => {inputValue = refs.input.value;}); // ('input', onInputChange);
+refs.input.addEventListener('input', onInputChange); // ('input', onInputChange);
 refs.renderBtnRef.addEventListener('click', () => { onRender(inputValue) });
 refs.destroyBtnRef.addEventListener('click', onDestroy);
 
 
-// function onInputChange() {
-//     inputValue = refs.input.value;
-//     console.log(inputValue);
-// };
+function onInputChange() {
+    inputValue = refs.input.value;
+    console.log(inputValue);
+};
 
-console.log(inputValue);
+
 
 function onRender(inputValue) {
     for (let i = 0; i < inputValue; i += 1) {
         const newBox = document.createElement('div');
-        newBox.style.width = `100px`;
-        newBox.style.height = `100px`;
+        newBox.style.backgroundColor = `blue`;
+        newBox.style.margin = `30px`
+        newBox.style.width = `30px`;
+        newBox.style.height = `30px`;
         newBoxesArray.push(newBox);
     };
     

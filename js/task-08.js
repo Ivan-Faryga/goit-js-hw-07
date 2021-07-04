@@ -5,21 +5,22 @@ const refs = {
      destroyBtnRef: document.querySelector('[data-action="destroy"]'),
 };
 
+
 const boxesDivRef = document.querySelector('#boxes');
-console.dir(boxesDivRef.style);
+// console.dir(boxesDivRef.style);
 
 let inputValue = 0;
 const newBoxesArray = [];
 
-refs.input.addEventListener('input', onInputChange);
-refs.renderBtnRef.addEventListener('click', onRender);
+refs.input.addEventListener('input', () => {inputValue = refs.input.value;}); // ('input', onInputChange);
+refs.renderBtnRef.addEventListener('click', () => { onRender(inputValue) });
 refs.destroyBtnRef.addEventListener('click', onDestroy);
 
 
-function onInputChange(event) {
-    return inputValue = event.currentTarget.value;
-    console.log(inputValue);
-};
+// function onInputChange() {
+//     inputValue = refs.input.value;
+//     console.log(inputValue);
+// };
 
 console.log(inputValue);
 
@@ -31,9 +32,11 @@ function onRender(inputValue) {
         newBoxesArray.push(newBox);
     };
     
-
     boxesDivRef.append(...newBoxesArray);
 };
 
-function onDestroy() { };
+function onDestroy() {
+    boxesDivRef.innerHTML = '';
+    refs.input.value = '';
+};
 
